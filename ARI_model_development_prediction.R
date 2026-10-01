@@ -46,7 +46,7 @@
 
 #Setting the default pathway to the folder
 setwd("P:/user/ARI_model")
-#For simplicity, it is recommended to have a "data" folder containing the datasets there. 
+# A "data" folder containing the datasets there are required. 
 
 
 required_packages <- c("haven","caret","glmnet","pROC","dplyr","ggplot2", "doParallel")
