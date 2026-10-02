@@ -1,4 +1,16 @@
 
+#Load the packages
+install.packages("xgboost", repos = "https://p3m.dev/cran/2025-12-01") # An older version of xgboost must be installed, to work with parallel processing within caret. 
+library(caret)
+library(xgboost)
+library(pROC)
+library(dplyr)
+library(parallel)
+library(doParallel)
+
+
+
+
 ari_bip <- ari_model_evaluation(
   data=example_bip, #The name of the dataframe/dataset
   outcome="bip", #The name of the outcome - NOTE how it's written "bip" and not bip
