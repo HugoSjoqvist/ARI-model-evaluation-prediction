@@ -12,9 +12,9 @@ Data requirements:
     a) the number of relatives of a given type
     b) the number of affected relatives
 
- Example:
-   n_cousins       = total number of cousins
-   n_cousins_adhd  = number of cousins with ADHD
+     Example:
+       n_cousins       = total number of cousins
+       n_cousins_adhd  = number of cousins with ADHD
 
  5. All predictor variables must be numeric.
 
@@ -27,3 +27,13 @@ Data requirements:
 
  8. Different classes of relatives and family diagnoses
     may be used depending on the research question.
+
+
+
+# ari_model_evaluation()
+ This function generates a model evaluation of the ARI. 
+ It divides the data into train and test, and report the
+ AUC for the model, alongside a logistic regression for
+ comparison purpose. 
+ This implementation uses XGBoost as an example.
+
