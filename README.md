@@ -1,2 +1,29 @@
 # ARI-model-evaluation-prediction
 R-code for ARI model evaluation and prediction
+
+Data requirements:
+ 1. Each row should represent one individual (index person).
+    
+ 3. Include only:
+    - the outcome variable
+    - predictor variables intended for the model
+
+ 4. Predictors should reflect both:
+    a) the number of relatives of a given type
+    b) the number of affected relatives
+
+ Example:
+   n_cousins       = total number of cousins
+   n_cousins_adhd  = number of cousins with ADHD
+
+ 5. All predictor variables must be numeric.
+
+ 6. The outcome variable must be binary:
+    0 = unaffected
+    1 = affected
+
+ 7. Short outcome names are recommended
+    (e.g. "asd", "adhd", "id").
+
+ 8. Different classes of relatives and family diagnoses
+    may be used depending on the research question.
