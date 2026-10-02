@@ -1,50 +1,52 @@
-# Example Data for ARI Model Evaluation and Prediction
-# 
-# This file contains template example data that meets the requirements
-# specified in ARI_model_development_prediction.R
+############################################################
+# This code simulates a dataset of 20,000 individuals. 
+# The data is not supposed to have a logical interpretation,
+# but is only used for a practical purpose. 
 #
-# Data Structure Requirements:
-# - Each row represents one individual (index person)
-# - Includes outcome variable and predictor variables only
-# - Predictors: number of relatives AND number of affected relatives per relative type
-# - All predictors must be numeric
-# - Outcome variable must be binary (0 = unaffected, 1 = affected)
-# - Short outcome names recommended (e.g., "asd", "adhd", "id", "bip")
+# Note that the sex variable is not wanted in the ARI score
+# (only created as an example of how the code can exclude it). 
+# 
+# Here we simulate the binary outcome "bip", and use information
+# from the siblings and cousins - both number of that specific
+# family member, and the number of that type who have "bip" or "adhd". 
+############################################################
 
-# Example dataset for bipolar disorder prediction
-# This is simulated data and should be replaced with your own data
-
+set.seed(12345)
+n <- 20000
+# ID variable
+id <- 1:n
+# Birth year (uniform 1992-2004)
+birthyear <- sample(1992:2004, n, replace = TRUE)
+# Six variables between 0-15,
+# strongly skewed toward lower values
+simulate_var <- function(n) {
+  rbeta(n, shape1 = 1.2, shape2 = 5) * 15
+}
+n_siblings <- round(simulate_var(n), 0)
+n_asd_siblings <- round(simulate_var(n), 0)
+n_bip_siblings <- round(simulate_var(n), 0)
+n_cousins <- round(simulate_var(n), 0)
+n_bip_cousins <- round(simulate_var(n), 0)
+n_asd_cousins <- round(simulate_var(n), 0)
+# Binary outcomes
+bip <- rbinom(n, size = 1, prob = 0.10)
+sex <- rbinom(n, size = 1, prob = 0.50)
+n_bip_parents <- rbinom(n, size = 2, prob = 0.50)
+n_asd_parents <- rbinom(n, size = 2, prob = 0.20)
+# Final dataset
 example_bip <- data.frame(
-  id = 1:100,
-  birthyear = rep(1950:2000, length.out = 100),
-  sex = rep(c("M", "F"), 50),
-  bip = rbinom(100, 1, 0.15),  # Binary outcome: 0 = unaffected, 1 = bipolar affected
-  
-  # Parents
-  n_parents = rep(2, 100),
-  n_parents_bip = rbinom(100, 2, 0.10),
-  
-  # Siblings
-  n_siblings = sample(0:8, 100, replace = TRUE),
-  n_siblings_bip = rbinom(100, 8, 0.10),
-  
-  # Grandparents
-  n_grandparents = rep(4, 100),
-  n_grandparents_bip = rbinom(100, 4, 0.08),
-  
-  # Cousins
-  n_cousins = sample(0:20, 100, replace = TRUE),
-  n_cousins_bip = rbinom(100, 20, 0.05),
-  
-  # Aunts/Uncles
-  n_aunts_uncles = sample(0:10, 100, replace = TRUE),
-  n_aunts_uncles_bip = rbinom(100, 10, 0.12)
+  id,
+  birthyear,
+  bip,
+  sex,
+  n_bip_parents,
+  n_asd_parents,
+  n_siblings,
+  n_asd_siblings,
+  n_bip_siblings,
+  n_cousins,
+  n_bip_cousins,
+  n_asd_cousins
 )
 
-# View the structure
-str(example_bip)
-head(example_bip)
 
-# Usage:
-# Load this file with: source("example_data.R")
-# Then use example_bip in your ari_model_evaluation() or ari_prediction() calls
