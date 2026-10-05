@@ -1,3 +1,16 @@
+############################################################
+# ARI-model-evaluation-prediction.R
+#
+# Copyright (c) 2026 Hugo Sjöqvist
+#
+# Released under the MIT License.
+#
+# This code relies on third-party R packages,
+# including xgboost, caret, Matrix, dplyr,
+# foreach and doParallel, which are subject
+# to their own licenses.
+############################################################
+
 
 #Load the packages
 install.packages("xgboost", repos = "https://p3m.dev/cran/2025-12-01") # An older version of xgboost must be installed, to work with parallel processing within caret. 
