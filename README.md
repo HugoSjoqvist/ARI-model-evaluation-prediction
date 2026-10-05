@@ -1,3 +1,9 @@
+# Affected Relative Index (ARI) 
+In reference to the manuscript: "The familial psychiatric architecture of early-onset neurodevelopmental conditions as captured by the Affected Relatives Index (ARI)" (not published)
+Version 1.0 
+Author Hugo Sjöqvist
+Updated 05/10/2026
+
 # ARI-model-evaluation-prediction
 R-code for ARI model evaluation and prediction
 
